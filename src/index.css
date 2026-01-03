@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GLOBAL RESET */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+  background-color: #050505; 
+  color: #c0c0c0;
+  font-family: 'Courier New', Courier, monospace; 
+  
+  /* Disable selection for app-like feel */
+  -webkit-user-select: none; 
+  user-select: none; 
+  
+  /* Prevent pull-to-refresh on mobile */
+  overscroll-behavior: none;
+}
+
+/* 3D CANVAS OPTIMIZATION */
+canvas {
+  /* Critical for mobile game control */
+  touch-action: none; 
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* UI ELEMENTS */
+button, input, a {
+  /* Re-enable interaction for UI */
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border: 1px solid #00f3ff;
+  border-radius: 4px;
+}
