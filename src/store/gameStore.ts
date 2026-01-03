@@ -176,6 +176,14 @@ export const useGameStore = create<GameState>((set, get) => ({
 
   joinMultiplayerRoom: (roomId) => {
     const sanitizedId = roomId.trim().toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, 12);
+    const BACKEND_URL = import.meta.env.PROD 
+  ? "https://your-backend-app-name.onrender.com" // You will get this URL in Phase 3
+  : ""; // Empty string means use localhost/proxy in dev
+  socket = io(BACKEND_URL, { 
+  path: '/socket.io',
+  reconnectionAttempts: 5,
+  transports: ['websocket'] 
+});
     if (sanitizedId.length < 3) return;
 
     set({ isLoading: true });
